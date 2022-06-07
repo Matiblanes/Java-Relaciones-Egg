@@ -30,25 +30,28 @@ public class ServiciosJugador {
 
             ID = leer.nextInt();
 
-            System.out.println(Constantes.ID_CORRECTO);
-
         }
-        
+
+        System.out.println(Constantes.ID_CORRECTO);
+
         IDsDisponibles.add(ID);
-        
+
         return j;
     }
 
     public boolean disparo(Revolver r, Jugador j) {
+        
+        boolean seHaMojado = ServR.mojar(r);
 
-        if (ServR.mojar(r)) {
+        if (seHaMojado) {
 
             j.setMojado(true);
 
         }
+        
         ServR.siguienteChorro(r);
 
-        return j.isMojado();
+        return seHaMojado;
     }
 
     public boolean idDisponible(int nuevoID) {

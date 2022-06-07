@@ -29,28 +29,22 @@ public class ServiciosJuego {
 
     public void cargarJugadores(ArrayList<Jugador> jugadores, String opc) {
 
+        int cantidadJugadores = 6;
+
         if (opc.equalsIgnoreCase("S")) {
 
             System.out.println("Ingrese la cantidad de jugadores");
 
-            int cantidadJugadores = leer.nextInt();
+            cantidadJugadores = leer.nextInt();
 
-            for (int i = 0; i < cantidadJugadores; i++) {
+        }
 
-                System.out.println("Jugadores ingresados " + (i + 1) + " de " + cantidadJugadores);
+        for (int i = 0; i < cantidadJugadores; i++) {
 
-                jugadores.add(ServJ.crearJugador());
+            System.out.println("Jugadores ingresados " + (i + 1) + " de " + cantidadJugadores);
 
-            }
+            jugadores.add(ServJ.crearJugador());
 
-        } else {
-
-            for (int i = 0; i < 6; i++) {
-
-                System.out.println("Jugadores ingresados " + (i + 1) + " de 6");
-
-                jugadores.add(ServJ.crearJugador());
-            }
         }
     }
 
@@ -58,16 +52,15 @@ public class ServiciosJuego {
 
         for (Jugador jugador : jugadores) {
 
-            if (jugador.isMojado() == true) {
+            String seHaMojado = " se ha mojado";
 
-                System.out.println(jugador.getNombre() + " se ha mojado ");
+            if (!jugador.isMojado()) {
 
-            } else {
-
-                System.out.println(jugador.getNombre() + " no se mojado ");
+                seHaMojado = " no" + seHaMojado;
 
             }
 
+            System.out.println(jugador.getNombre() + seHaMojado);
         }
     }
 
@@ -118,13 +111,15 @@ public class ServiciosJuego {
 
         Jugador jugadorActual;
 
+        int cantidadJugadores = listaJugadores.size();
+
         do {
 
             jugadorActual = listaJugadores.get(numeroJugador);
 
             numeroJugador++;
 
-            if (numeroJugador > 5) {
+            if (numeroJugador >= cantidadJugadores) {
 
                 numeroJugador = 0;
             }

@@ -5,8 +5,6 @@ import java.util.Objects;
 
 public class ServiciosRevolver {
 
-    public Revolver r = new Revolver();
-
     public void llenarRevolver(Revolver r) {
 
         r.setPosicionActual((int) (Math.random() * 6) + 1);
@@ -15,12 +13,8 @@ public class ServiciosRevolver {
 
     public boolean mojar(Revolver r) {
 
-        if (Objects.equals(r.getPosicionActual(), r.getPosicionAgua())) {
+        return Objects.equals(r.getPosicionActual(), r.getPosicionAgua());
 
-            return true;
-        }
-        
-        return false;
     }
 
     public void siguienteChorro(Revolver r) {
