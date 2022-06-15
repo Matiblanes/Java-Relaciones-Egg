@@ -4,6 +4,7 @@ import Constantes.Constantes;
 import Entidades.Juego;
 import Entidades.Jugador;
 import Entidades.Revolver;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,11 +16,11 @@ public class ServiciosJuego {
 
     public void llenarJuego(ArrayList<Jugador> jugadores, Revolver r) {
 
-        System.out.println("-----Que comience el juego-----");
+        System.out.println(Constantes.INICO_JUEGO);
 
         ServR.llenarRevolver(r);
 
-        System.out.println("Desea ingresar una cantidad de jugadores (S/N)");
+        System.out.println(Constantes.ELEGIR_CANTIDAD);
 
         String opc = leer.next();
 
@@ -33,7 +34,7 @@ public class ServiciosJuego {
 
         if (opc.equalsIgnoreCase("S")) {
 
-            System.out.println("Ingrese la cantidad de jugadores");
+            System.out.println(Constantes.CANTIDAD_JUGADORES);
 
             cantidadJugadores = leer.nextInt();
 
@@ -44,7 +45,6 @@ public class ServiciosJuego {
             System.out.println("Jugadores ingresados " + (i + 1) + " de " + cantidadJugadores);
 
             jugadores.add(ServJ.crearJugador());
-
         }
     }
 
@@ -78,7 +78,7 @@ public class ServiciosJuego {
 
     public void siguienteRonda(Jugador jugadorActual, Revolver revolver) {
 
-        System.out.println("\nTurno del jugador: " + jugadorActual.getNombre());
+        System.out.println(Constantes.TURNO_JUGADOR + jugadorActual.getNombre());
 
         if (ServJ.disparo(revolver, jugadorActual)) {
 
@@ -125,7 +125,6 @@ public class ServiciosJuego {
             }
 
             if (jugadorActual.isMojado()) {
-
                 continue;
             }
 
@@ -137,7 +136,7 @@ public class ServiciosJuego {
 
         } while (!todosMojados(listaJugadores) && !opc.equals("N"));
 
-        System.out.println("-----Resultados-----");
+        System.out.println(Constantes.RESULTADOS);
 
         mostrarResultados(listaJugadores);
     }

@@ -1,6 +1,7 @@
 package Servicios;
 
 import Entidades.Revolver;
+
 import java.util.Objects;
 
 public class ServiciosRevolver {
@@ -12,9 +13,7 @@ public class ServiciosRevolver {
     }
 
     public boolean mojar(Revolver r) {
-
         return Objects.equals(r.getPosicionActual(), r.getPosicionAgua());
-
     }
 
     public void siguienteChorro(Revolver r) {
