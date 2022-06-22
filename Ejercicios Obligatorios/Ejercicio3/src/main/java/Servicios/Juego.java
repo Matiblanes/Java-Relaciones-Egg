@@ -12,16 +12,25 @@ public class Juego {
     private final ServiciosBaraja ServBar = new ServiciosBaraja();
 
     public void menu() {
+        
         Baraja barajaActual = ServBar.crearBaraja();
+        
         ArrayList<Carta> cartasDisponibles = barajaActual.getCartasDisponibles();
+        
         ArrayList<Carta> cartasUsadas = barajaActual.getCartasUsadas();
 
         Carta cartaActual;
+        
         System.out.println("¡Que comience el juego!");
+
         Integer opc, cantidad;
+        
         do {
+        
             System.out.println(Constantes.OPCIONES_DISPONIBLES);
+            
             System.out.print(Constantes.ELEGIR_OPCION);
+            
             opc = leer.nextInt();
 
             switch (opc) {
@@ -45,9 +54,12 @@ public class Juego {
                         System.out.println(Constantes.BARAJA_VACIA);
                     }
                 }
-                case 3 ->
+                case 3 ->{
+                
                     ServBar.cartasDisponibles(cartasDisponibles);
+                
                 case 4 -> {
+
                     System.out.print(Constantes.PEDIR_CANTIDAD);
 
                     cantidad = leer.nextInt();
@@ -58,7 +70,6 @@ public class Juego {
 
                         break;
                     }
-
                     System.out.println(Constantes.MOSTRAR_CARTAS);
 
                     ServBar.darCartas(barajaActual, cantidad);
@@ -74,7 +85,6 @@ public class Juego {
 
                     ServBar.mostrarMonton(cartasUsadas);
                 }
-
                 case 6 -> {
                     if (cartasDisponibles.isEmpty()) {
 
@@ -82,7 +92,6 @@ public class Juego {
 
                         break;
                     }
-
                     System.out.println(Constantes.MOSTRAR_CARTAS_BARAJA);
 
                     ServBar.mostrarBaraja(cartasDisponibles);
